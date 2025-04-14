@@ -4,9 +4,6 @@ import { AppBar, Toolbar, Typography, Button, Box, Container, Paper, TextField, 
 import ReactDOM from "react-dom/client";
 import { Provider } from "react-redux";
 import store from "./store/store";
-
-
-
 import SouthEastIcon from '@mui/icons-material/SouthEast';
 import NorthEastIcon from '@mui/icons-material/NorthEast';
 import EastIcon from '@mui/icons-material/East';
@@ -29,9 +26,12 @@ export default function LandingPage(): JSX.Element {
   const contactRef = useRef<HTMLDivElement>(null);
   const demoFormRef = useRef<HTMLDivElement>(null);
 
-  const scrollToRef = (ref: React.RefObject<HTMLDivElement>) => {
-    ref.current?.scrollIntoView({ behavior: "smooth" });
+  const scrollToRef = (ref: React.RefObject<HTMLDivElement | null>) => {
+    if (ref.current) {
+      ref.current.scrollIntoView({ behavior: 'smooth' });
+    }
   };
+  
 
   const primaryBg = "#0B0F19";
   const accentColor = "#14B8A6";
